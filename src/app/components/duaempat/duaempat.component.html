@@ -1,0 +1,26 @@
+<form class="form-container">
+  <mat-label>Dua Empat</mat-label>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Input Total Length</mat-label>
+    <input type="number" autocomplete="off" matInput [formControl]="sInputText">
+  </mat-form-field>
+  <mat-error *ngIf="sInputText.hasError('max')">
+    Max Length is 100
+  </mat-error>
+</form>
+<button mat-raised-button color="primary" (click)="printCounter()" [disabled]="sInputText.hasError('max') || sInputText.hasError('required')">Print</button>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <!-- Position Column -->
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef> Index. </th>
+    <td mat-cell *matCellDef="let element"> {{element.index}} </td>
+  </ng-container>
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

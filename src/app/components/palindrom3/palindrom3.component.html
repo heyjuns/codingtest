@@ -1,0 +1,8 @@
+<form class="form-container">
+  <mat-label>Reccursive Logic</mat-label>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Input Text</mat-label>
+    <input type="text" autocomplete="off" matInput (input)="checkPalindrom()" [formControl]="sInputText">
+    <mat-hint *ngIf="sInputText.value">{{sInputText.value}} is <strong>{{isPalindrom?'Palindrom':'Not Palindrom'}}</strong></mat-hint>
+  </mat-form-field>
+</form>

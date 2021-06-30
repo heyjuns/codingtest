@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="container__filter">
+    <mat-form-field class="container__filter__search" appearance="fill">
+      <mat-label>Search Phone</mat-label>
+      <input matInput type="search" [(ngModel)]="searchTerm" autocomplete="off"
+        (ngModelChange)="updateFilter(selectedYear, selectedBrand)">
+    </mat-form-field>
+
+    <mat-form-field class="container__filter__select" appearance="fill">
+      <mat-label *ngIf="!selectedYear.length">Choose Year <br>All Years</mat-label>
+      <mat-label *ngIf="selectedYear.length">Filtered</mat-label>
+      <mat-select multiple [(ngModel)]="selectedYear" (closed)="updateFilter(selectedYear, selectedBrand)">
+        <mat-option *ngFor="let item of years" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="container__filter__select" appearance="fill">
+      <mat-label *ngIf="!selectedBrand.length">Choose Brand <br>All Brand</mat-label>
+      <mat-label *ngIf="selectedBrand.length">Filtered</mat-label>
+      <mat-select multiple [(ngModel)]="selectedBrand" (closed)="updateFilter(selectedYear, selectedBrand)">
+        <mat-option *ngFor="let item of brands" [value]="item">
+          {{item}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="grid-wrapper">
+    <mat-card *ngFor="let item of dataSource">
+      <mat-card-header>
+        <mat-card-title>{{item.name}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>{{item.description}}</p>
+        <p class="additional-detail">{{item.brand}}</p>
+        <p class="additional-detail">{{item.release_year}}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+</div>

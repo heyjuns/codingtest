@@ -1,0 +1,41 @@
+.container {
+  &__filter {
+    display: grid;
+    gap: 0 10px;
+    grid-template-columns: 1fr 1fr;
+    &__search {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+    &__select {
+      grid-row-start: 2;
+    }
+  }
+  .grid-wrapper {
+    margin: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    ::ng-deep {
+      .mat-card-header-text {
+        margin: 0px;
+      }
+    }
+    .additional-detail{
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 425px) {
+  .grid-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
